@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDS Awareness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        /* General body style */
+        body {
+            background: linear-gradient(180deg, rgba(8, 6, 89, 0.9), rgba(8, 6, 89, 0.85));  /* Dark blue top, darker blue bottom */
+            font-family: 'Comfortaa', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* Top bar with white background and thin gradient */
+        .top-bar {
+            background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.8));  
+            color: black;  
+            font-weight: bold;
+            padding: 10px 20px;  
+            width: 100%;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+        /* Title or logo */
+        .logo {
+            font-size: 1.5em; 
+        }
+
+        /* Navigation links */
+        .nav-links {
+            display: flex;
+            gap: 20px; 
+        }
+
+        .nav-link {
+            color: black; 
+            text-decoration: none; 
+            font-weight: bold;
+            transition: color 0.3s; 
+        }
+
+        .nav-link:hover {
+            color: #00e5ff; /* Change color on hover to cyan */
+        }
+
+        /* Center section for title */
+        .centered-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px;
+            padding: 10px;
+        }
+        .centered-section h1 {
+            font-weight: bold;
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .centered-section h1 span {
+            color: #00e5ff; /* Cyan for emphasized parts */
+        }
+
+        /* Description box with added margin for spacing */
+        .description-box {
+            border: 2px solid #00e5ff; /* Cyan border */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto; /* Adds 20px vertical space between each box */
+            color: white;
+            font-weight: 300;
+            text-align: left;
+            background-color: rgba(0, 229, 255, 0.1); /* Softer cyan background */
+            box-shadow: inset 0px 0px 10px rgba(0, 229, 255, 0.3);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .description-box .highlight {
+            color: #00e5ff; /* Cyan for highlighted text */
+            font-weight: bold;
+        }
+
+        /* Symptoms section */
+        .symptoms-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .symptoms-list li {
+            margin: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        .symptoms-list li:before {
+            content: "•";
+            color: #00e5ff; /* Cyan bullet points */
+            position: absolute;
+            left: 0;
+        }
+
+        /* Buttons */
+        .button-container {
+            margin: 20px 0;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            color: black;
+            font-weight: bold;
+            background-color: #00e5ff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 229, 255, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background-color: #00ffff; /* Brighter cyan */
+            color: black;
+        }
+
+        /* Footer bar */
+        .footer-bar {
+            width: 100%;
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1em;  
+            font-weight: bold; 
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+            position: relative;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="logo">AidsCare.ph</div>
+    <div class="nav-links">
+        <a href="https://www.philhealth.gov.ph/" class="nav-link">PhilHealth</a>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids" class="nav-link">W.H.O</a>
+        <a href="https://doh.gov.ph/list-of-diseases/hiv/" class="nav-link">D.O.H</a>
+    </div>
+</div>
+
+<div class="centered-section">
+    <h1>What is AIDS/HIV?</h1>
+    <div class="description-box">
+        <p>Ang <span class="highlight">human immunodeficiency virus (HIV)</span> ay isang impeksiyon na umaatake sa immune system ng katawan. Ang <span class="highlight">Acquired immunodeficiency syndrome (AIDS)</span> ay ang pinaka-advanced na yugto ng sakit. Tinatarget ng <span class="highlight">HIV ang mga puting selula ng dugo ng katawan</span>, na nagpapahina sa <span class="highlight">immune system</span>. Ginagawa nitong mas madaling magkasakit ng mga sakit tulad ng <span class="highlight">tuberculosis, impeksyon, at ilang mga kanser</span>.</p>
+        <p>Ang <span class="highlight">HIV</span> ay kumakalat mula sa mga likido sa katawan ng isang taong nahawahan, kabilang ang <span class="highlight">dugo, gatas ng ina, semilya, at mga likido sa vaginal</span>. Hindi ito kumakalat sa pamamagitan ng mga halik, yakap, o pagbabahagi ng pagkain. Maaari rin itong kumalat mula sa isang ina hanggang sa kanyang sanggol.</p>
+    </div>
+
+    <div class="description-box">
+        <h2 style="color: #00e5ff;">Sintomas ng AIDS</h2>
+        <ul class="symptoms-list">
+            <li>Lagnat</li>
+            <li>Sakit ng ulo</li>
+            <li>Muscle aches at joint pain</li>
+            <li>Rash</li>
+            <li>Sore throat at painful mouth sores</li>
+            <li>Swollen lymph glands</li>
+            <li>Diarrhea</li>
+            <li>Weight loss</li>
+        </ul>
+    </div>
+
+    <div class="description-box">
+        <h2 style="color: #00e5ff;">Pag-iwas ng AIDS</h2>
+        <ul class="symptoms-list">
+            <li>Gumamit ng condom nang pare-pareho at tama</li>
+            <li>Regular na magpasuri para sa HIV</li>
+            <li>Limitahan ang bilang ng mga kasosyong sekswal</li>
+            <li>Kumuha ng pre-exposure prophylaxis (PrEP) kung nasa panganib</li>
+            <li>Iwasang magbahagi ng mga karayom ​​o hiringgilya</li>
+            <li>Tratuhin at pangasiwaan ang mga impeksiyon na nakukuha sa pakikipagtalik (sexually transmitted infections (STIs)</li>
+            <li>Turuan ang iba tungkol sa pag-iwas sa HIV</li>
+            <li>Tiyakin ang mga ligtas na gawi sa panahon ng panganganak</li>
+            <li>Magsanay ng ligtas na pakikipagtalik, kabilang ang monogamy sa isa't isa</li>
+            <li>Gumamit ng sterile na kagamitan para sa mga tattoo, piercing, o mga medikal na pamamaraan</li>
+        </ul>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-container">
+        <a href="Group3_10B_Website.html" class="nav-button">&lt; Page 1</a>
+        <a href="Group3_10B_Website_Page3.html" class="nav-button">Page 3 &gt;</a>
+    </div>
+</div>
+
+<div class="footer-bar">
+    <p>Copyright © 2024 AidsCare.ph</p>
+</div>
+
+</body>
+</html>

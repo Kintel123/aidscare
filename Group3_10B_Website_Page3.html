@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDS Awareness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;700&display=swap" rel="stylesheet">
+    <style>
+        /* General body style */
+        body {
+            background: linear-gradient(180deg, rgba(8, 6, 89, 0.9), rgba(8, 6, 89, 0.85));  
+            font-family: 'Comfortaa', sans-serif;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        /* Top bar with white background and thin gradient */
+        .top-bar {
+            background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.8));  
+            color: black;  
+            font-weight: bold;
+            padding: 10px 20px;  
+            width: 100%;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+        /* Title or logo */
+        .logo {
+            font-size: 1.5em; 
+        }
+
+        /* Navigation links */
+        .nav-links {
+            display: flex;
+            gap: 20px; 
+        }
+
+        .nav-link {
+            color: black; 
+            text-decoration: none; 
+            font-weight: bold;
+            transition: color 0.3s; 
+        }
+
+        .nav-link:hover {
+            color: #00e5ff; /* Change color on hover to cyan */
+        }
+
+        /* Center section for title */
+        .centered-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 20px;
+            padding: 10px;
+            flex-grow: 1; /* Allow this section to grow and fill available space */
+        }
+        .centered-section h1 {
+            font-weight: bold;
+            font-size: 1.8em;
+            color: white;
+            margin-bottom: 10px;
+        }
+        .centered-section h1 span {
+            color: #00e5ff; /* Cyan for emphasized parts */
+        }
+
+        /* Description box with added margin for spacing */
+        .description-box {
+            border: 2px solid #00e5ff; /* Cyan border */
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto; /* Adds 20px vertical space between each box */
+            color: white;
+            font-weight: 300;
+            text-align: left;
+            background-color: rgba(0, 229, 255, 0.1); /* Softer cyan background */
+            box-shadow: inset 0px 0px 10px rgba(0, 229, 255, 0.3);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .description-box .highlight {
+            color: #00e5ff; /* Cyan for highlighted text */
+            font-weight: bold;
+            font-size: 1.2em; /* Larger font size for highlighted text */
+        }
+
+        /* Buttons */
+        .button-container {
+            margin: 20px 0;
+        }
+        .nav-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            color: black;
+            font-weight: bold;
+            background-color: #00e5ff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 229, 255, 0.3);
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        /* Footer bar */
+        .footer-bar {
+            width: 100%;
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1em;  
+            font-weight: bold; 
+            box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+        /* Canvas for the line graph and pie charts */
+        #lineChart, .pieChart, #ageChart {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="logo">AidsCare.ph</div>
+    <div class="nav-links">
+        <a href="https://www.philhealth.gov.ph/" class="nav-link">PhilHealth</a>
+        <a href="https://www.who.int/news-room/fact-sheets/detail/hiv-aids" class="nav-link">W.H.O</a>
+        <a href="https://doh.gov.ph/list-of-diseases/hiv/" class="nav-link">D.O.H</a>
+    </div>
+</div>
+
+<div class="centered-section">
+    <h1>AIDS/HIV Infographic at Statistical Information</h1>
+    <div class="description-box">
+        <p class="highlight">Global Statistics:</p>
+        <p style="color: white;">1 sa 7 tao na may HIV ay walang kamalayan sa kanilang impeksyon.</p>
+        <p style="color: white;">1 sa 10 tao na may HIV ang namamatay mula sa mga sakit na nauugnay sa AIDS.</p>
+        
+        <p class="highlight">Istatistika ng Pilipinas:</p>
+        <p style="color: white;">1 sa 25 tao sa Pilipinas na may HIV ay magkakaroon ng AIDS.</p>
+        <p style="color: white;">1 sa 23 taong nabubuhay na may HIV ang namamatay mula sa mga sakit na nauugnay sa AIDS.</p>
+    </div>
+
+    <div class="description-box">
+        <h2 style="color: #00e5ff;">Global AIDS Graph</h2>
+        <canvas id="lineChart"></canvas>
+    </div>
+
+    <div class="description-box">
+        <h2 style="color: #00e5ff;">Nangungunang 10 Bansang may Pinakamataas na Rate ng HIV (%)</h2>
+        <canvas id="hivRatesChart" class="pieChart"></canvas>
+    </div>
+
+    <div class="description-box">
+        <h2 style="color: #00e5ff;">Nangungunang 10 Bansang may Pinakamaraming Kaso ng HIV</h2>
+        <canvas id="hivCasesChart" class="pieChart"></canvas>
+    </div>
+
+    <div class="description-box">
+        <h2 style="color: #00e5ff;">Nangungunang 10 Mga Bansang may Pinakamaraming Kamatayan na nauugnay sa AIDS</h2>
+        <canvas id="hivDeathsChart" class="pieChart"></canvas>
+    </div>
+
+    <div class="description-box">
+        <h2 style="color: #00e5ff;">Mga Edad na Pinaka Naapektuhan ng HIV</h2>
+        <canvas id="ageChart"></canvas>
+    </div>
+</div>
+
+ <!-- Buttons -->
+    <div class="button-container">
+        <a href="Group3_10B_Website_Page2.html" class="nav-button">&lt; Page 2</a>
+        <a href="Group3_10B_Website_Page4.html" class="nav-button">Page 4 &gt;</a>
+    </div>
+</div>
+
+<div class="footer-bar">
+    <p>Copyright © 2024 AidsCare.ph</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Global AIDS Cases Line Graph
+    const ctxLine = document.getElementById('lineChart').getContext('2d');
+    const lineChart = new Chart(ctxLine, {
+        type: 'line',
+        data: {
+            labels: ['1981', '1985', '1990', '1995', '2000', '2005', '2010', '2015', '2020', '2024'],
+            datasets: [
+                {
+                    label: 'AIDS Cases',
+                    data: [0, 500000, 8000000, 20000000, 35000000, 50000000, 67000000, 80000000, 86000000, 88000000], // 88 million cases in 2020 and 2024
+                    backgroundColor: 'rgba(0, 229, 255, 0.2)',
+                    borderColor: '#00e5ff',
+                    borderWidth: 2,
+                    fill: true
+                },
+                {
+                    label: 'AIDS Deaths',
+                    data: [0, 250000, 1000000, 3000000, 10000000, 15000000, 20000000, 27000000, 41000000, 42000000], // 42 million deaths in 2020 and 2024
+                    backgroundColor: 'rgba(255, 0, 0, 0.2)', // Light red fill
+                    borderColor: 'red', // Red line for deaths
+                    borderWidth: 2,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#00e5ff' // Change y-axis tick color to cyan
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#00e5ff' // Change x-axis tick color to cyan
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#00e5ff', // Change legend text color to cyan
+                    }
+                }
+            }
+        }
+    });
+
+    // Top 10 Countries with the Highest HIV Rates (%) Pie Chart
+    const ctxRates = document.getElementById('hivRatesChart').getContext('2d');
+    const hivRatesChart = new Chart(ctxRates, {
+        type: 'pie',
+        data: {
+            labels: ['Swaziland', 'Botswana', 'Lesotho', 'South Africa', 'Namibia', 'Zimbabwe', 'Zambia', 'Malawi', 'Tanzania', 'Kenya'],
+            datasets: [{
+                label: 'HIV Rates (%)',
+                data: [27.3, 20.3, 23.4, 19.0, 14.7, 13.1, 11.4, 10.5, 9.6, 8.3],
+                backgroundColor: [
+                    '#00e5ff',
+                    '#ff5722',
+                    '#8bc34a',
+                    '#ffc107',
+                    '#673ab7',
+                    '#f44336',
+                    '#3f51b5',
+                    '#009688',
+                    '#ff9800',
+                    '#e91e63'
+                ],
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#00e5ff', // Change legend text color to cyan
+                    }
+                }
+            }
+        }
+    });
+
+    // Top 10 Countries with the Most HIV Cases Pie Chart
+    const ctxCases = document.getElementById('hivCasesChart').getContext('2d');
+    const hivCasesChart = new Chart(ctxCases, {
+        type: 'pie',
+        data: {
+            labels: ['South Africa', 'Nigeria', 'India', 'Russia', 'United States', 'Kenya', 'Tanzania', 'Uganda', 'Zimbabwe', 'Zambia'],
+            datasets: [{
+                label: 'HIV Cases',
+                data: [7400000, 2300000, 2200000, 1400000, 1300000, 1300000, 1300000, 1200000, 1200000, 1200000],
+                backgroundColor: [
+                    '#00e5ff',
+                    '#ff5722',
+                    '#8bc34a',
+                    '#ffc107',
+                    '#673ab7',
+                    '#f44336',
+                    '#3f51b5',
+                    '#009688',
+                    '#ff9800',
+                    '#e91e63'
+                ],
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#00e5ff', // Change legend text color to cyan
+                    }
+                }
+            }
+        }
+    });
+
+    // Top 10 Countries with the Most AIDS-related Deaths Pie Chart
+    const ctxDeaths = document.getElementById('hivDeathsChart').getContext('2d');
+    const hivDeathsChart = new Chart(ctxDeaths, {
+        type: 'pie',
+        data: {
+            labels: ['South Africa', 'India', 'Nigeria', 'Russia', 'United States', 'Zimbabwe', 'Kenya', 'Tanzania', 'Uganda', 'Zambia'],
+            datasets: [{
+                label: 'AIDS Deaths',
+                data: [430000, 330000, 220000, 150000, 130000, 100000, 100000, 90000, 80000, 80000],
+                backgroundColor: [
+                    '#00e5ff',
+                    '#ff5722',
+                    '#8bc34a',
+                    '#ffc107',
+                    '#673ab7',
+                    '#f44336',
+                    '#3f51b5',
+                    '#009688',
+                    '#ff9800',
+                    '#e91e63'
+                ],
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#00e5ff', // Change legend text color to cyan
+                    }
+                }
+            }
+        }
+    });
+
+    // Ages Most Affected by HIV Bar Chart
+    const ctxAge = document.getElementById('ageChart').getContext('2d');
+    const ageChart = new Chart(ctxAge, {
+        type: 'bar',
+        data: {
+            labels: ['15-24', '25-34', '35-44', '45-54', '55-64', '65+'],
+            datasets: [{
+                label: 'Cases per 1000 people',
+                data: [3.4, 6.7, 4.3, 3.1, 1.5, 0.5],
+                backgroundColor: '#00e5ff',
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#00e5ff' // Change y-axis tick color to cyan
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#00e5ff' // Change x-axis tick color to cyan
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#00e5ff', // Change legend text color to cyan
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
